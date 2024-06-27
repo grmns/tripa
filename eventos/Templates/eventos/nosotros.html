@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Nuestro Equipo</h2>
+    <div class="row">
+        {% for miembro in miembros %}
+        <div class="col-md-4">
+            <div class="card">
+                {% if miembro.imagen %}
+                <img src="{% static 'images/'|add:miembro.imagen %}" class="card-img-top" alt="{{ miembro.nombre }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ miembro.nombre }}</h5>
+                    <p class="card-text">{{ miembro.detalle }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
